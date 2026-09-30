@@ -2,6 +2,12 @@
 
 A complete single-player web implementation of the project-defined Puluc variant. The human plays from the south (`0`) toward the north (`10`) against an authoritative server-controlled bot.
 
+## Live game
+
+**Play online:** https://puluc-game.onrender.com
+
+[![Puluc: The Obsidian Path gameplay](docs/puluc-game-screenshot.png)](https://puluc-game.onrender.com)
+
 ## Stack and architecture
 
 - Node.js 20+, TypeScript strict mode, Express, native WebSocket protocol via `ws`, Zod validation, Vitest.
