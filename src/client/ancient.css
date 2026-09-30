@@ -1,0 +1,251 @@
+body{background:radial-gradient(circle at 50% 45%,#18362e,#040807 76%)}
+.game-shell{box-shadow:0 0 0 1px #b2813f55,0 0 100px #000}
+.game-shell:before{content:"";position:absolute;z-index:2;inset:0;pointer-events:none;background:linear-gradient(90deg,#0009 0,transparent 17%,transparent 83%,#0009),radial-gradient(circle at 7% 19%,#ff9d0033 0 1%,transparent 7%),radial-gradient(circle at 93% 71%,#ff78002b 0 1%,transparent 8%);mix-blend-mode:screen}
+.scene{filter:saturate(1.15) contrast(1.1) brightness(.88);animation:templeBreath 8s ease-in-out infinite alternate}
+.scene:before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,#ffd27a 0 1px,transparent 2px),radial-gradient(circle,#00eeff 0 1px,transparent 2px);background-size:83px 97px,127px 143px;background-position:10px 20px,60px 80px;opacity:.17;animation:embers 18s linear infinite}
+.scene:after{background:radial-gradient(ellipse at center,transparent 36%,#020707b5 100%)}
+.hud-card{border-color:#d2a85e;box-shadow:0 9px 34px #000e,inset 0 0 0 2px #3b2a17,inset 0 0 24px #d98b171c}
+.top-hud,.player-card{clip-path:polygon(0 0,94% 0,100% 20%,100% 80%,94% 100%,0 100%)}
+.top-hud:before,.player-card:before{content:"◆";position:absolute;right:13px;color:#d7a94f66;font-size:1.15rem;text-shadow:0 0 10px #ff9c2d}
+.avatar-bot{background:#070908 url('/assets/ember-guardian.png') center 34%/82% auto no-repeat}
+.avatar-human{background:#071011 url('/assets/jade-guardian.png') center 31%/86% auto no-repeat}
+.avatar span{opacity:0}
+.playfield:before,.playfield:after{content:"";position:absolute;top:-1%;bottom:-1%;width:4px;background:linear-gradient(transparent,#00f4ff 12%,#00aeba 50%,#00f4ff 88%,transparent);box-shadow:0 0 8px #00e5ff,0 0 18px #00e5ff88;opacity:.48}
+.playfield:before{left:-9%}.playfield:after{right:-9%}
+.cell{background:linear-gradient(90deg,#21170a10,#f7bf4a0c,#21170a10)}
+.cell:before{border-color:#f1b84431;box-shadow:inset 0 0 8px #ffbf3a0b}
+.cell:nth-child(3n) .rune{transform:rotate(45deg)}
+.rune{color:#ffc65d88;text-shadow:0 0 8px #ff9d00;font-family:Georgia,serif;transition:.25s}
+.cell:hover .rune{color:#ffe0a0;transform:scale(1.2)}
+.stack{height:100%;align-items:flex-end;filter:drop-shadow(0 7px 5px #000c)}
+.piece{width:48px;height:60px;margin-left:-25px;border:0!important;border-radius:0!important;background:none!important;box-shadow:none!important;color:transparent!important;overflow:visible;transform-origin:50% 90%;animation:guardianArrive .36s cubic-bezier(.2,.9,.3,1.2)}
+.piece:first-child{margin-left:0}.piece:before{display:none}.piece img{display:block;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 3px 2px #000) saturate(1.15) contrast(1.08)}
+.piece.human img{filter:drop-shadow(0 3px 2px #000) drop-shadow(0 0 5px #00eaff88) saturate(1.18)}
+.piece.bot img{filter:drop-shadow(0 3px 2px #000) drop-shadow(0 0 5px #ff7b0088) saturate(1.13)}
+.stack em{right:-13px;top:0;background:radial-gradient(circle,#332711,#080b0a);border:2px solid #e2ad51;box-shadow:0 0 10px #ff9d0066}
+.roll-button{position:relative;overflow:hidden;text-shadow:0 2px 2px #003d42;box-shadow:inset 0 0 0 2px #073e43,inset 0 0 22px #18ffff77,0 9px 30px #000}
+.roll-button:after{content:"";position:absolute;inset:-100% -30%;background:linear-gradient(100deg,transparent 42%,#ffffff5e 50%,transparent 58%);transform:translateX(-70%);animation:buttonShine 4s ease-in-out infinite}
+@keyframes guardianArrive{from{opacity:0;transform:translateY(-15px) scale(.72)}to{opacity:1;transform:none}}
+@keyframes templeBreath{to{filter:saturate(1.23) contrast(1.12) brightness(.94)}}
+@keyframes embers{to{background-position:90px -160px,-80px -210px}}
+@keyframes buttonShine{0%,65%{transform:translateX(-70%)}85%,100%{transform:translateX(70%)}}
+@media(max-width:560px){.piece{width:39px;height:49px;margin-left:-21px}}
+@media(prefers-reduced-motion:reduce){.scene,.scene:before,.piece,.roll-button:after{animation:none!important}}
+
+/* Portrait HUD corrections based on the live 654×1004 layout */
+.top-hud{left:14px;right:14px;padding-left:108px;padding-right:106px;overflow:visible}
+.avatar-bot{left:10px;width:88px;height:88px}
+.top-hud>.icon-button{right:18px;top:23px;width:50px;height:50px;z-index:4}
+.connection{right:74px;top:16px;padding:4px 8px;border:1px solid #42d5d744;border-radius:99px;background:#071010aa;font-size:.58rem;text-transform:uppercase;letter-spacing:.08em}
+.top-hud .identity p{max-width:190px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bottom-hud{left:14px;right:14px;bottom:14px;height:100px;gap:12px}
+.player-card{width:56%;height:88px;padding-left:104px;overflow:visible}
+.avatar-human{left:10px;top:5px;width:78px;height:78px}
+.cast-tray{margin-left:auto;min-width:168px}
+.roll-button{min-width:168px;height:76px;font-size:1rem}
+.sticks{right:18px;bottom:112px;min-height:58px;padding:7px 11px;gap:5px;border-radius:14px;background:linear-gradient(#0d1513ed,#070b0aed)}
+.stick{width:16px;height:44px}
+.stick.dormant{filter:grayscale(1);opacity:.38;transform:rotate(5deg)}
+.stick.dormant:nth-child(even){transform:rotate(-6deg)}
+.turn-banner{top:-18px;max-width:230px;overflow:hidden;text-overflow:ellipsis}
+
+@media(max-width:700px){
+  .top-hud{top:14px;height:98px;padding-left:94px;padding-right:76px}
+  .avatar-bot{left:7px;top:7px;width:82px;height:82px}
+  .identity h1{font-size:1.45rem}.identity p{font-size:.65rem}
+  .top-hud>.icon-button{right:12px;top:25px;width:44px;height:44px}
+  .connection{right:61px;top:12px}
+  .player-card{width:55%;padding-left:88px}
+  .avatar-human{left:7px;width:72px;height:72px}
+  .player-card .identity h2{font-size:1.3rem}
+  .piece-counts{gap:5px}.pip{width:12px;height:12px}
+}
+
+@media(max-width:560px){
+  .top-hud{left:8px;right:8px;top:8px;height:84px;padding:8px 60px 8px 72px}
+  .avatar-bot{left:5px;top:5px;width:68px;height:68px}
+  .top-hud>.icon-button{right:8px;top:20px;width:40px;height:40px}
+  .connection{display:none}
+  .bottom-hud{left:8px;right:8px;bottom:8px;height:82px;gap:8px}
+  .player-card{width:57%;height:76px;padding-left:70px}
+  .avatar-human{left:4px;top:5px;width:63px;height:63px}
+  .cast-tray{min-width:120px}.roll-button{min-width:120px;height:64px;font-size:.82rem}
+  .sticks{right:8px;bottom:91px;transform:none}.stick{width:13px;height:38px}
+}
+
+/* Precision pass: readable stacks, restrained selection, balanced status */
+.connection{left:auto!important;right:78px!important;top:18px!important;display:flex!important;align-items:center;gap:5px;width:auto!important;color:#90d7c9!important;font-size:.55rem!important;font-weight:700}
+.online-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#6affc9;box-shadow:0 0 8px #37ffc0}
+.top-hud .identity{padding-right:72px}.top-hud .identity h1{line-height:1.05}
+.cell.legal{background:linear-gradient(90deg,#00e5ff08,#00e5ff20,#00e5ff08);border-color:#54e9e9aa;box-shadow:inset 0 0 10px #00d9e825,0 0 7px #00e5ff66;animation:legalBreath 1.6s ease-in-out infinite}
+.cell.legal:after{content:"SELECT";position:absolute;right:5px;bottom:3px;padding:1px 4px;border-radius:5px;background:#071311d9;color:#8ffff4;font-size:.38rem;font-weight:800;letter-spacing:.12em;border:1px solid #39d9d966}
+.stack{position:relative;width:64px;height:100%;display:flex;align-items:center;justify-content:center;filter:none}
+.guardian{position:relative;z-index:2;display:block;width:45px;height:57px;transform-origin:50% 90%;animation:guardianArrive .3s cubic-bezier(.2,.9,.3,1.15)}
+.guardian img{display:block;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 4px 3px #000d) saturate(1.08) contrast(1.06)}
+.guardian.human img{filter:drop-shadow(0 4px 3px #000d) drop-shadow(0 0 4px #00eaff88) saturate(1.12)}
+.guardian.bot img{filter:drop-shadow(0 4px 3px #000d) drop-shadow(0 0 4px #ff7b0077) saturate(1.08)}
+.controller-mark{position:absolute;right:0;top:3px;display:grid;place-items:center;width:14px;height:14px;border-radius:50%;background:#07100fed;border:1px solid #dcae58;color:#fff;font:800 .48rem/1 system-ui;box-shadow:0 2px 5px #000}
+.layers{position:absolute;z-index:3;left:50%;bottom:0;transform:translate(-50%,55%);display:flex;gap:2px;padding:2px 4px;border-radius:7px;background:#050a09db;border:1px solid #ad884e77;box-shadow:0 3px 6px #000b}
+.layer{display:block;width:8px;height:4px;border-radius:2px;border:1px solid #ffffff55}.layer.human{background:#12dce2;box-shadow:0 0 4px #00e5ff}.layer.bot{background:#e98625;box-shadow:0 0 4px #ff7500}
+.stack em{z-index:5;right:-2px;top:2px;width:18px;height:18px;font-size:.58rem}
+.piece{display:none!important}
+.roll-button:disabled{opacity:.82;filter:saturate(.4) brightness(.64);cursor:default}.roll-button:disabled:after{display:none}
+.turn-banner{max-width:280px;padding-inline:18px;font-size:.66rem}
+@keyframes legalBreath{50%{border-color:#8ffff4;box-shadow:inset 0 0 13px #00d9e838,0 0 10px #00e5ff88}}
+@media(max-width:560px){.guardian{width:38px;height:49px}.stack{width:54px}.connection{display:none!important}.cell.legal:after{display:none}}
+
+/* Final frame repair: continuous borders and atmospheric life */
+.top-hud,.player-card{
+  clip-path:none!important;
+  overflow:visible;
+  border:2px solid #c99a4d!important;
+  background:linear-gradient(105deg,#08100ff5 0%,#121b18f2 64%,#1c211be8 100%);
+  box-shadow:0 0 0 1px #16100a,0 10px 32px #000e,inset 0 0 0 1px #f1c87535,inset 0 0 28px #d98b1715;
+}
+.top-hud{border-radius:18px 18px 30px 18px!important}
+.player-card{border-radius:18px 30px 18px 18px!important}
+.top-hud:after,.player-card:after{
+  content:"";
+  position:absolute;
+  inset:6px;
+  border:1px solid #8c6937cc;
+  border-radius:12px 12px 22px 12px;
+  pointer-events:none;
+  box-shadow:inset 0 0 12px #0009,0 0 8px #e7ad4430;
+}
+.player-card:after{border-radius:12px 22px 12px 12px}
+.top-hud:before,.player-card:before{
+  content:"◆";
+  z-index:3;
+  right:17px;
+  width:24px;
+  height:24px;
+  display:grid;
+  place-items:center;
+  border:1px solid #9d7438;
+  border-radius:50%;
+  background:#15170f;
+  color:#f0bd5eaa;
+  font-size:.66rem;
+  box-shadow:0 0 12px #ff9c2d55,inset 0 0 8px #e8942233;
+}
+.top-hud:before{top:50%;transform:translateY(-50%)}
+.player-card:before{top:50%;transform:translateY(-50%)}
+.identity{z-index:4}.avatar{z-index:5}
+
+.game-shell:after{
+  content:"";
+  position:absolute;
+  z-index:2;
+  inset:-12%;
+  pointer-events:none;
+  background:radial-gradient(ellipse at 7% 70%,#ff8a002d 0 2%,transparent 12%),radial-gradient(ellipse at 93% 71%,#ff8a002d 0 2%,transparent 12%),linear-gradient(115deg,transparent 35%,#b9ffff0b 49%,transparent 61%);
+  mix-blend-mode:screen;
+  animation:lightSweep 11s ease-in-out infinite alternate;
+}
+.scene:before{opacity:.24;animation:embers 15s linear infinite,emberPulse 3.4s ease-in-out infinite alternate}
+.scene:after{background:radial-gradient(ellipse at center,transparent 34%,#020707a8 82%,#010303e8 100%),linear-gradient(180deg,#08130d24,#ffffff00 35%,#07100d38)}
+.playfield:before,.playfield:after{animation:railPulse 2.8s ease-in-out infinite alternate}
+.rune b{display:block;animation:runeWake 4.5s ease-in-out infinite}
+.cell:nth-child(2n) .rune b{animation-delay:-1.4s}.cell:nth-child(3n) .rune b{animation-delay:-2.8s}
+.avatar-bot{animation:emberPortrait 3.2s ease-in-out infinite alternate}
+.avatar-human{animation:jadePortrait 3.2s ease-in-out infinite alternate}
+.sticks{box-shadow:0 8px 22px #000d,inset 0 0 16px #d38b1820,0 0 12px #e6932020}
+.stick.painted{animation:stickGlow 1.5s ease-in-out infinite alternate}
+.turn-banner{box-shadow:0 4px 14px #000d,inset 0 0 9px #d8942230,0 0 10px #e6a83222}
+
+@keyframes railPulse{to{opacity:.78;box-shadow:0 0 10px #00e5ff,0 0 25px #00e5ffaa}}
+@keyframes runeWake{0%,65%,100%{opacity:.48;text-shadow:0 0 6px #ff9d00}78%{opacity:1;text-shadow:0 0 9px #ffd166,0 0 18px #ff9d00}}
+@keyframes emberPortrait{to{box-shadow:0 0 0 5px #18201c,0 0 0 7px #876333,0 8px 25px #000,0 0 20px #ff7b0066}}
+@keyframes jadePortrait{to{box-shadow:0 0 0 5px #10201f,0 0 0 7px #188b8d,0 8px 25px #000,0 0 20px #00e5ff66}}
+@keyframes stickGlow{to{text-shadow:0 0 9px #00ffff,0 0 17px #00e5ff;filter:brightness(1.18)}}
+@keyframes emberPulse{to{opacity:.32}}
+@keyframes lightSweep{from{transform:translateX(-2%) translateY(1%)}to{transform:translateX(2%) translateY(-1%)}}
+
+@media(prefers-reduced-motion:reduce){.game-shell:after,.playfield:before,.playfield:after,.rune b,.avatar-bot,.avatar-human,.stick.painted{animation:none!important}}
+
+/* Ancient typography system — entirely local, no network font dependency */
+:root{
+  --font-display:Copperplate,"Copperplate Gothic Light","Palatino Linotype",Palatino,serif;
+  --font-body:Palatino,"Palatino Linotype",Baskerville,Georgia,serif;
+  --font-inscribed:Copperplate,Palatino,Georgia,serif;
+}
+html,body,button,select,input,dialog{font-family:var(--font-body)!important}
+.identity h1,.identity h2,.panel-head h2,dialog h2,#resultTitle{
+  font-family:var(--font-display)!important;
+  font-weight:700;
+  letter-spacing:.045em;
+  text-transform:none;
+}
+.roll-button,.turn-banner,.connection,.panel-actions button,.settings-grid label,.status{
+  font-family:var(--font-inscribed)!important;
+  font-weight:700;
+  letter-spacing:.11em;
+}
+.roll-button{font-size:1.02rem;text-shadow:0 2px 2px #003d42,0 0 8px #69ffff44}
+.turn-banner{letter-spacing:.14em}
+.identity p,.history,.history p,dialog p{font-family:var(--font-body)!important;letter-spacing:.025em}
+.piece-counts,.stack em,.controller-mark,.index,.sticks b{
+  font-family:var(--font-inscribed)!important;
+  font-variant-numeric:oldstyle-nums;
+}
+.rune,.rune b{font-family:var(--font-inscribed)!important;font-weight:700}
+select{font-family:var(--font-display)!important;letter-spacing:.04em}
+
+/* Selectable visual themes */
+.theme-setting{grid-column:1/-1}
+body[data-theme="khalil"]{background:radial-gradient(circle at 50% 38%,#164d50,#080b16 72%)}
+body[data-theme="khalil"] .scene{
+  background:linear-gradient(180deg,#03091655,transparent 26%,transparent 70%,#03040b99),url('/assets/garden-of-khalil.png') center/cover no-repeat;
+  filter:saturate(1.08) contrast(1.05) brightness(.92);
+  animation:khalilBreath 9s ease-in-out infinite alternate;
+}
+body[data-theme="khalil"] .scene:before{
+  background-image:radial-gradient(ellipse at 30% 20%,#ff7ca8 0 2px,transparent 3px),radial-gradient(ellipse at 70% 40%,#ffd6e4 0 2px,transparent 3px),radial-gradient(circle,#ffd36b 0 1px,transparent 2px);
+  background-size:91px 127px,137px 173px,79px 97px;
+  opacity:.34;
+  animation:petalFall 16s linear infinite;
+}
+body[data-theme="khalil"] .scene:after{background:radial-gradient(ellipse at 50% 25%,#fffbd817,transparent 28%),radial-gradient(ellipse at center,transparent 40%,#040714a8 100%)}
+body[data-theme="khalil"] .game-shell:before{background:linear-gradient(90deg,#0508189e 0,transparent 17%,transparent 83%,#0508189e),radial-gradient(circle at 8% 75%,#ff8c4933 0 2%,transparent 10%),radial-gradient(circle at 92% 75%,#ff8c4933 0 2%,transparent 10%)}
+body[data-theme="khalil"] .hud-card{background:linear-gradient(105deg,#081315f4,#142825ec 62%,#292216e8);border-color:#e2b968!important;box-shadow:0 0 0 1px #16100a,0 10px 32px #000e,inset 0 0 0 1px #fff1ae42,inset 0 0 30px #27d9d91a}
+body[data-theme="khalil"] .playfield:before,body[data-theme="khalil"] .playfield:after{background:linear-gradient(transparent,#fff2a5 12%,#18e1e2 48%,#fff2a5 88%,transparent);box-shadow:0 0 10px #fff0a1,0 0 26px #00e5ffaa}
+body[data-theme="khalil"] .cell:before{border-color:#f7d37b4c;box-shadow:inset 0 0 10px #fff0a11c}
+body[data-theme="khalil"] .rune{color:#ffe29aaa;text-shadow:0 0 8px #ffe179,0 0 14px #ff8d42}
+body[data-theme="khalil"] .turn-banner{border-color:#e5bd68;background:#11160fc9;color:#fff0b6}
+body[data-theme="khalil"] .roll-button{border-color:#e0bd6f;outline-color:#488f8c;background:linear-gradient(135deg,#17666a,#17a5a5 55%,#84712f)}
+@keyframes petalFall{from{background-position:0 -160px,30px -220px,0 -100px}to{background-position:70px 940px,-80px 1020px,30px 900px}}
+@keyframes khalilBreath{to{filter:saturate(1.18) contrast(1.08) brightness(.98)}}
+@media(prefers-reduced-motion:reduce){body[data-theme="khalil"] .scene,body[data-theme="khalil"] .scene:before{animation:none!important}}
+
+/* Bilingual guide */
+.guide-dialog{width:min(720px,calc(100vw - 28px));max-height:min(820px,calc(100dvh - 28px));overflow:hidden;padding:22px}
+.guide-tabs{display:flex;gap:8px;margin:0 54px 16px 0;border-bottom:1px solid #9f793f66;padding-bottom:10px}
+.guide-tab{min-width:96px;padding:8px 14px;background:#101a17;border:1px solid #806037;color:#cfb779;cursor:pointer}
+.guide-tab.active{color:#fff0b1;border-color:#e0b25b;background:linear-gradient(#263127,#121a17);box-shadow:inset 0 0 12px #d7922525,0 0 8px #d79a3030}
+.guide-page{display:none;max-height:calc(100dvh - 150px);overflow:auto;padding:0 10px 18px;scrollbar-color:#b88943 #101715}
+.guide-page.active{display:block}.guide-page h2{color:#f0c36e;margin:4px 0 18px}.guide-page h3{color:#62dbd8;font-size:1rem;margin:0 0 4px}.guide-page section{padding:11px 14px;margin-bottom:9px;border:1px solid #95703a40;border-radius:12px;background:#07100f88}.guide-page p{margin:0;line-height:1.8;color:#e6e0ce}.guide-page[dir="rtl"]{font-family:Tahoma,"Geeza Pro",var(--font-body)!important}.guide-page[dir="rtl"] h2,.guide-page[dir="rtl"] h3,.guide-page[dir="rtl"] p{font-family:Tahoma,"Geeza Pro",serif!important}
+
+/* True mobile layout: dynamic viewport, safe areas, touch-sized controls */
+@media(max-width:700px){
+  html,body{width:100%;height:100%;min-height:100%;overflow:hidden}
+  .game-shell{position:relative!important;top:auto!important;transform:none!important;width:100vw!important;height:100dvh!important;min-height:560px!important;margin:0!important;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}
+  .top-hud{top:max(8px,env(safe-area-inset-top));left:8px;right:8px}
+  .bottom-hud{bottom:max(8px,env(safe-area-inset-bottom));left:8px;right:8px}
+  .playfield{top:13.8%;bottom:17.4%;left:28.5%;right:28.5%}
+  .side-panel{position:absolute;top:max(66px,calc(env(safe-area-inset-top) + 58px));right:8px;left:8px;width:auto;max-height:calc(100dvh - 150px);overflow:auto;transform:translateY(-130%);border-radius:18px}
+  .side-panel.open{transform:none}
+  .settings-grid{grid-template-columns:1fr 1fr}.theme-setting{grid-column:1/-1}
+  button,select{min-height:44px}.panel-actions button{min-height:44px}
+  dialog{margin:auto}.guide-dialog{width:calc(100vw - 16px);max-height:calc(100dvh - 16px);padding:16px}
+  .guide-tabs{margin-right:46px}.guide-page{max-height:calc(100dvh - 126px);padding-inline:3px}.guide-page section{padding:10px}.guide-page p{font-size:.92rem;line-height:1.75}
+}
+@media(max-width:430px){
+  .top-hud{height:78px}.avatar-bot{width:62px;height:62px}.top-hud{padding-left:66px}.identity h1{font-size:1.05rem!important}.identity p{display:none}.top-hud>.icon-button{top:18px;width:38px;height:38px}
+  .playfield{top:12.8%;bottom:16.5%;left:27%;right:27%}
+  .bottom-hud{height:72px}.player-card{height:68px;width:58%;padding-left:62px}.avatar-human{width:56px;height:56px}.player-card .identity h2{font-size:1rem}.pip{width:9px;height:9px}
+  .cast-tray{min-width:105px}.roll-button{min-width:105px;height:58px;font-size:.72rem;padding-inline:8px}.roll-icon{font-size:1.15rem;margin-right:4px}
+  .sticks{bottom:78px;right:5px;padding:5px 7px;gap:3px}.stick{width:11px;height:32px}.sticks b{font-size:1.1rem}
+  .guardian{width:34px;height:44px}.stack{width:48px}.turn-banner{font-size:.55rem;max-width:205px}
+  .guide-tab{min-width:82px;padding:7px 10px}.guide-page h2{font-size:1.3rem}.guide-page h3{font-size:.95rem}.guide-page p{font-size:.86rem}
+}

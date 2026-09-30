@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#07100f">
+  <title>Puluc: Temple of the Mist</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/ancient.css">
+</head>
+<body>
+  <main class="game-shell">
+    <div class="scene" aria-hidden="true"></div>
+    <header class="top-hud hud-card">
+      <div class="avatar avatar-bot"><span>☀</span></div>
+      <div class="identity"><span class="sigil">♛</span><h1>K’awiil</h1><div id="botCounts" class="piece-counts"></div><p id="botStatus">Watching the path</p></div>
+      <div id="connection" class="connection">Connecting…</div>
+      <button id="settings" class="icon-button" aria-label="Game settings">⚙</button>
+    </header>
+
+    <section class="playfield">
+      <div id="turnBanner" class="turn-banner"></div>
+      <div id="board" class="board" aria-label="Puluc board"></div>
+    </section>
+
+    <section class="bottom-hud">
+      <div class="player-card hud-card">
+        <div class="avatar avatar-human"><span>✦</span></div>
+        <div class="identity"><span class="sigil jade">♜</span><h2>Tlaloc</h2><div id="humanCounts" class="piece-counts"></div></div>
+      </div>
+      <div class="cast-tray">
+        <div id="sticks" class="sticks" aria-live="polite"></div>
+        <button id="roll" class="roll-button"><span class="roll-icon">▯</span><span>ROLL</span></button>
+      </div>
+    </section>
+
+    <aside class="side-panel hud-card">
+      <div class="panel-head"><h2>Journey Log</h2><button id="closePanel" class="icon-button" aria-label="Close settings">×</button></div>
+      <div class="settings-grid">
+        <label class="theme-setting">Theme<select id="theme"><option value="temple">Ancient Temple</option><option value="khalil">Garden of Khalil</option></select></label>
+        <label>Difficulty<select id="difficulty"><option>easy</option><option selected>medium</option><option>hard</option></select></label>
+        <label>Pieces<select id="pieceCount"><option>4</option><option selected>5</option><option>6</option></select></label>
+      </div>
+      <div class="panel-actions"><button id="pause">Pause</button><button id="rules">Rules</button><button id="restart" class="danger">Restart</button></div>
+      <div id="history" class="history" aria-live="polite"></div>
+    </aside>
+  </main>
+
+  <dialog id="rulesDialog" class="guide-dialog">
+    <button class="close icon-button" aria-label="Close">×</button>
+    <div class="guide-tabs" role="tablist" aria-label="Guide language">
+      <button class="guide-tab active" data-guide-lang="fa" role="tab">فارسی</button>
+      <button class="guide-tab" data-guide-lang="en" role="tab">English</button>
+    </div>
+    <article class="guide-page active" data-guide-page="fa" dir="rtl" lang="fa">
+      <h2>راهنمای بازی پولوک</h2>
+      <section><h3>هدف بازی</h3><p>مهره‌های حریف را اسیر کنید و پشتهٔ تحت کنترل خود را به پایگاه خودتان برگردانید. مهره‌های خودی آزاد و مهره‌های حریف برای همیشه حذف می‌شوند. با حذف تمام مهره‌های زندهٔ حریف برنده می‌شوید.</p></section>
+      <section><h3>پرتاب چوب‌ها</h3><p>چهار چوب پرتاب می‌شوند. تعداد وجه‌های نقش‌دار مقدار حرکت است؛ اگر هیچ وجهی نقش‌دار نباشد، مقدار حرکت ۵ خواهد بود. نتیجهٔ ۱ یا ۵ پس از انجام یک حرکت قانونی، نوبت اضافه می‌دهد.</p></section>
+      <section><h3>ورود و حرکت</h3><p>مهرهٔ ذخیره فقط با پرتاب ۱ وارد پایگاه خودی می‌شود. یک پشته باید دقیقاً به‌اندازهٔ مقدار پرتاب حرکت کند. پس از رسیدن به انتهای حریف، جهت حرکت پشته برای بازگشت معکوس می‌شود.</p></section>
+      <section><h3>گرفتن و پشته‌ها</h3><p>فرود روی پشتهٔ خودی باعث ادغام می‌شود. فرود روی پشتهٔ حریف آن را اسیر می‌کند. مهرهٔ بالایی کنترل‌کنندهٔ پشته است و رنگ نوارهای زیر مهره، مالکیت تمام لایه‌ها را نشان می‌دهد.</p></section>
+      <section><h3>پایان و تساوی</h3><p>اسیر هنوز زنده محسوب می‌شود تا زمانی که به پایگاه کنترل‌کننده برسد. تکرار سه‌بارهٔ وضعیت، ۲۰۰ دور کامل یا ۵۰۰ نیم‌حرکت باعث تساوی می‌شود.</p></section>
+      <section><h3>کنترل‌ها</h3><p>ROLL برای پرتاب، DEPLOY برای ورود مهره از ذخیره و SELECT برای انتخاب پشتهٔ درخشان است. تنظیمات، تم، درجه سختی، تعداد مهره، مکث و شروع مجدد از دکمهٔ چرخ‌دنده در دسترس هستند.</p></section>
+    </article>
+    <article class="guide-page" data-guide-page="en" dir="ltr" lang="en">
+      <h2>How to Play Puluc</h2>
+      <section><h3>Objective</h3><p>Capture opposing pieces and return a stack you control to your own base. Your pieces are freed and captured enemy pieces are permanently eliminated. Eliminate every living enemy piece to win.</p></section>
+      <section><h3>Casting Sticks</h3><p>Four sticks are cast. The number of painted faces is the movement value; no painted faces means a value of 5. A 1 or 5 grants another cast after a legal move is completed.</p></section>
+      <section><h3>Entry and Movement</h3><p>A reserve piece enters only after a roll of 1. A stack moves exactly the rolled distance. On reaching the enemy endpoint, its direction reverses for the journey home.</p></section>
+      <section><h3>Capture and Stacks</h3><p>Landing on a friendly stack merges them. Landing on an opposing stack captures it. The top piece controls the stack, while the colored layer markers show ownership of every carried piece.</p></section>
+      <section><h3>Ending and Draws</h3><p>A captured piece remains alive until homecoming resolves it. Threefold repetition, 200 completed rounds, or 500 half-moves results in a draw.</p></section>
+      <section><h3>Controls</h3><p>Use ROLL to cast, DEPLOY to enter a reserve piece, and SELECT to choose a glowing legal stack. Themes, difficulty, piece count, pause, and restart are available from the gear button.</p></section>
+    </article>
+  </dialog>
+  <dialog id="resultDialog"><h2 id="resultTitle"></h2><p id="resultReason"></p><button id="rematch" class="roll-button">Play again</button></dialog>
+  <div id="toast" role="alert"></div>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
